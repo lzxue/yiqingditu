@@ -1,7 +1,8 @@
-import { Scene, LineLayer, PolygonLayer, PointLayer, Popup } from "@antv/l7";
+import { Scene, LineLayer, PolygonLayer, PointLayer, Popup, Control } from "@antv/l7";
 import { GaodeMap } from "@antv/l7-maps";
 import chinagData from "./data/geo.json";
-import data from './data/data.json';
+import data from './data/newdata.json';
+const colors =  ['#800026','#E31A1C','#FED976','rgba(255,255,255,0.8)'].reverse();
 const scene = new Scene({
   id: "map",
   map: new GaodeMap({
@@ -14,15 +15,15 @@ const scene = new Scene({
 });
 const chinageo = joinData(chinagData, data)
 const china = new PolygonLayer()
-  .source(chinageo,)
+  .source(chinageo)
   .size(1)
   .shape("fill")
+  .color('red')
   .color("confirmed",(d)=>{
-    return d > 10 ? '#800026' :
-           d > 5  ? '#E31A1C' :
-           d > 2  ? '#FD8D3C' :
-           d > 0  ? '#FED976' :
-                    'rgba(255,255,255,0.8)' ;
+    return d > 100 ?  colors[3] :
+           d > 10  ?  colors[2] :
+           d > 0  ?  colors[1] :
+           colors[0] ;
   })
   .style({
     opacity: 1
@@ -61,16 +62,18 @@ const pointLayer = new PointLayer({})
   .shape("name", "text")
   .size(12)
   .color("#fff")
-  .active(true)
   .style({
     stroke: "#ffffff", // 描边颜色
     strokeWidth: 1.0, // 描边宽度
-    strokeOpacity: 1.0
+    strokeOpacity: 1.0,
+    textAllowOverlap: true
   });
 
 scene.addLayer(china);
 scene.addLayer(chinaline);
 scene.addLayer(pointLayer);
+const legend = addLegend();
+scene.addControl(legend);
 
 function joinData(geo, data) {
   const dataObj = {};
@@ -83,4 +86,22 @@ function joinData(geo, data) {
     return item
   })
   return geo;
+}
+
+function addLegend() {
+
+  const legend = new Control({
+    position: 'bottomright'
+  });
+  legend.onAdd = function() {
+    var el = document.createElement('div');
+    el.className = 'infolegend legend';
+    var grades = [0, 1, 10, 100];
+    el.innerHTML+='<h4>图例</h4><span>确诊数</span><br>'
+    for (var i = 0; i < grades.length; i++) {
+      el.innerHTML += '<i style="background:' + colors[i] + '"></i> ' + grades[i] + (grades[i + 1] ? '–' + grades[i + 1] + '<br>' : '+');
+    }
+    return el;
+  };
+  return legend;
 }
