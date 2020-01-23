@@ -9,6 +9,7 @@ var ghpages = require('gh-pages')
 var REPO = 'git@github.com:lzxue/yiqingditu.git'
 
 function callback(e) {
+  console.log(e)
   if (e) {
     console.err(e)
     return
