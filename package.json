@@ -2,14 +2,14 @@
   "main": "index.js",
   "dependencies": {
     "@antv/l7": "latest",
-    "@antv/l7-maps": "latest",
-    "gh-pages": "^2.2.0"
+    "@antv/l7-maps": "latest"
   },
   "keywords": [],
   "name": "",
   "description": null,
   "version": "0.0.20",
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "autoprefixer": "7.1.0",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
@@ -53,7 +53,7 @@
   },
   "scripts": {
     "join": "node ./bin/join",
-    "publish": "gh-pages -d build",
+    "publish": "node gh-pages.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
