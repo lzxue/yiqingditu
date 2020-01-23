@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 12
+before_script:
+  - npm install
+instal:
+  - npm run join
+  - npm run build
+  - npm run publish
+branches:
+  only:
+    -master
+
+
