@@ -9,6 +9,7 @@ instal:
   - npm run publish
 branches:
   only:
-    -master
+    - master
+    - dev
 
 
