@@ -2,7 +2,8 @@
   "main": "index.js",
   "dependencies": {
     "@antv/l7": "latest",
-    "@antv/l7-maps": "latest"
+    "@antv/l7-maps": "latest",
+    "gh-pages": "^2.2.0"
   },
   "keywords": [],
   "name": "",
