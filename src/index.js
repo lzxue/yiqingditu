@@ -2,7 +2,7 @@ import { Scene, LineLayer, PolygonLayer, PointLayer, Popup, Control } from "@ant
 import { GaodeMap } from "@antv/l7-maps";
 import chinagData from "./data/geo.json";
 import data from './data/newdata.json';
-const colors =  ['#800026','#E31A1C','#FED976','rgba(255,255,255,0.8)'].reverse();
+const colors =  ['#73181B','#E04B49','#F08E7E','rgba(255,255,255,0.8)'].reverse();
 const scene = new Scene({
   id: "map",
   map: new GaodeMap({
@@ -19,7 +19,7 @@ const china = new PolygonLayer()
   .size(1)
   .shape("fill")
   .color('red')
-  .color("confirmed",(d)=>{
+  .color("confirm",(d)=>{
     return d > 100 ?  colors[3] :
            d > 10  ?  colors[2] :
            d > 0  ?  colors[1] :
@@ -38,8 +38,8 @@ const china = new PolygonLayer()
       .setHTML(`
          <div class = info>
         <h4>${e.feature.properties.name}</h4>
-        <p><span>确诊: ${e.feature.properties.confirmed}</span> <span>疑似: ${e.feature.properties.suspected}</span><p>
-        <p><span>治愈: ${e.feature.properties.cure}</span> <span>死亡: ${e.feature.properties.death}</span> </p>
+        <p><span>确诊: ${e.feature.properties.confirm}</span> <span>疑似: ${e.feature.properties.suspect}</span><p>
+        <p><span>治愈: ${e.feature.properties.heal}</span> <span>死亡: ${e.feature.properties.dead}</span> </p>
         </div>
         `);
     scene.addPopup(popup);
