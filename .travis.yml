@@ -4,10 +4,9 @@ node_js:
 instal:
   - npm install
   - npm run join
-  
-  - npm run publish
 script:
   - npm run build
+  - npm run publish
 
 branches:
   only:
