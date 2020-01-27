@@ -6,16 +6,16 @@ instal:
   - npm run join
 script:
   - npm run build
-  - npm run publish
-
 branches:
   only:
     - master
     - dev
 deploy:
   provider: pages
+  local_dir: build
+  skip_cleanup: true
   verbose: true
   github-token: $GITHUB_TOKEN # github 上的token环境变量
   on:
-    branch: master
+    branch: dev
 
