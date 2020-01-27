@@ -2,9 +2,10 @@
   "main": "index.js",
   "dependencies": {
     "@antv/l7": "latest",
-    "@antv/l7-maps": "latest"
+    "@antv/l7-maps": "latest",
+    "urllib": "^2.34.2"
   },
-  "homepage" : "https://lzxue.github.io/yiqingditu/",
+  "homepage": "https://lzxue.github.io/yiqingditu/",
   "keywords": [],
   "name": "",
   "description": null,
@@ -53,7 +54,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "join": "node ./bin/join",
+    "join": "node ./src/fetch/getdata.js",
     "publish": "node gh-pages.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
