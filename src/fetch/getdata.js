@@ -4,9 +4,10 @@ var fs = require('fs');
 
 getAreaCounts().then(data=>{
   parseNcovData(data);
-  const province = GroupByArea(data);
-  const res = joinProvinceData(province);
-  fs.writeFileSync('../data/newdata.json',JSON.stringify(res))
+  // const province = GroupByArea(data);
+  // const res = joinProvinceData(province);
+  groupByCity(data)
+  // fs.writeFileSync('../data/newdata.json',JSON.stringify(res))
 });
 
 async function getAreaCounts() {
@@ -52,7 +53,8 @@ function GroupByArea(data) {
 function groupByCity(data) {
   const cityObj = {};
   data.forEach(element => {
-    const {  city } = element;
+    const {  city , area} = element;
+    console.log(area,city)
     cityObj[city] = element;
   })
   return cityObj;
