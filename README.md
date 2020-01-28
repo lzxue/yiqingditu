@@ -6,3 +6,4 @@
 
 ![疫情地图](https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*KouNQ6rx9A8AAAAAAAAAAABkARQnAQ)
 
+// 接口 http://lab.isaaclin.cn//nCoV/api/area
