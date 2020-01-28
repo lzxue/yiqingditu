@@ -1,9 +1,10 @@
 ## 疫情地图
 
-地图数据来源：自动抓取 腾讯新闻
+支持省级，市级地图可视化上钻下取
 
-数据可视化：[Antv L7](https://github.com/antvis/L7)
+数据源：https://github.com/BlankerL/DXY-2019-nCoV-Crawler
 
-![疫情地图](https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*KouNQ6rx9A8AAAAAAAAAAABkARQnAQ)
+数据可视化：https://github.com/antvis/L7
 
-// 接口 http://lab.isaaclin.cn//nCoV/api/area
+![疫情地图](https://gw.alipayobjects.com/mdn/rms_855bab/afts/img/A*zGUSS4kJZZEAAAAAAAAAAABkARQnAQ)
+
