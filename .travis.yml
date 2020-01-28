@@ -2,12 +2,9 @@ language: node_js
 node_js:
   - 12
 instal:
-  - npm install
-  - npm run join
+  - yarn install
 script:
   - npm run build
-  - npm run publish
-
 branches:
   only:
     - master

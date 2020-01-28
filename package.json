@@ -54,8 +54,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "join": "node ./src/fetch/getdata.js",
-    "publish": "node gh-pages.js",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
