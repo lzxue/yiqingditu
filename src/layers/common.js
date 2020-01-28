@@ -24,21 +24,6 @@ export function addLayerGroup(scene, data, dataPoint) {
   china.on('mousemove', e => {
     const info = scene.getControlByName('infoControl');
     info.update(e.feature);
-    console.log(info);
-    // const popup = new Popup({
-    //   offsets: [0, 0],
-    //   closeButton: true
-    // })
-    //   .setLnglat(e.lngLat)
-    //   .setHTML(`
-    //      <div class = info>
-    //     <h4>${e.feature.properties.name}</h4>
-    //     <p><span>确诊: ${e.feature.properties.confirm}</span> <span>疑似: ${e.feature.properties.suspect}</span><p>
-    //     <p><span>治愈: ${e.feature.properties.heal}</span> <span>死亡: ${e.feature.properties.dead}</span> </p>
-    //     </div>
-    //     `);
-    // scene.addPopup(popup);
-    // const {adcode, cities} = e.feature.properties; 
 
   });
   const chinaline = new LineLayer({})

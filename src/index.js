@@ -49,7 +49,7 @@ function joinData(geo, data) {
  * 获取疫情信息
  */
 async function getNcovData() {
-  const data = await (await fetch('http://lab.isaaclin.cn/nCoV/api/area')).json();
+  const data = await (await fetch('//lab.isaaclin.cn/nCoV/api/area')).json();
   const provinceData = [];
   for (let i = 0; i < data.results.length; i++) {
     const item = data.results[i];
