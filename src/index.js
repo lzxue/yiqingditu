@@ -49,11 +49,14 @@ function joinData(geo, data) {
  * 获取疫情信息
  */
 async function getNcovData() {
-  const data = await (await fetch('//lab.isaaclin.cn/nCoV/api/area')).json();
+  // //lab.isaaclin.cn/nCoV/api/area
+  const url = 'https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan';
+  const data = await (await fetch(url)).json();
+
   const provinceData = [];
-  for (let i = 0; i < data.results.length; i++) {
-    const item = data.results[i];
-    if (item.country === '中国') {
+  for (let i = 0; i < data.data.getAreaStat.length; i++) {
+    const item = data.data.getAreaStat[i];
+    // if (item.country === '中国') {
       const cities = item.cities;
 
       provinceData.push({
@@ -72,7 +75,7 @@ async function getNcovData() {
           }
         })
       });
-    }
+    // }
 
   }
   return provinceData;

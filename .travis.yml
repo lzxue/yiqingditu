@@ -14,5 +14,5 @@ deploy:
   verbose: true
   github-token: $GITHUB_TOKEN # github 上的token环境变量
   on:
-    branch: master
+    branch: dev
 
