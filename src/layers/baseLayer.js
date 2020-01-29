@@ -35,6 +35,7 @@ export  default class BaseLayer {
   }
   destroy() {
     this.removeLayers();
+    this.scene.render();
     this.layers = [];
     this.data =[];
     this.pointData=[];

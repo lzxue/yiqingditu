@@ -48,7 +48,10 @@ export  default class ProvinceNcovLayer extends BaseLayer {
       this.cityLayer.layers[0].on('undblclick',()=>{
         this.cityLayer.destroy();
         this.show();
-        this.scene.render();
+        setTimeout(() => {
+          this.scene.render();
+        },10)
+       
       })
     this.scene.render();
 }
