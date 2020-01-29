@@ -12,7 +12,7 @@ export  default class ProvinceNcovLayer extends BaseLayer {
     })
   }
   async  addCityLayer(adcode,citydata) {
-    this.hide();
+
     const cityGeo = await (await fetch(`https://gw.alipayobjects.com/os/antvdemo/assets/json/${adcode}.json`)).json();
    
     const dataPoint = cityGeo.features.map(fe=>{
@@ -53,7 +53,10 @@ export  default class ProvinceNcovLayer extends BaseLayer {
         },10)
        
       })
-    this.scene.render();
+      this.hide();
+      setTimeout(() => {
+        this.scene.render();
+      },10)
 }
 
 }

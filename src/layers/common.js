@@ -1,6 +1,6 @@
-import { LineLayer, PolygonLayer, PointLayer, Control } from "@antv/l7";
+import { LineLayer, PolygonLayer, PointLayer, Control, Layers } from "@antv/l7";
 const colors= ['rgb(106,33,29)','rgb(144,55,53)','rgb(181,78,76)','rgb(211,104,101)','rgb(227,147,131)','rgba(255,255,255,0.8)'].reverse();
-// const colors = ['#73181B', '#E04B49', '#F08E7E', 'rgba(255,255,255,0.8)'].reverse();
+
 export function addLayerGroup(scene, data, dataPoint) {
   const china = new PolygonLayer({
     autoFit: true
@@ -93,8 +93,8 @@ export function addInfoControl() {
     }
     this._div.innerHTML = `<div class=info_control>
            <h4>${feature.properties.name}</h4>
-          <p><span>确诊: ${feature.properties.confirm}</span> <span>疑似: ${feature.properties.suspect}</span><p>
-          <p><span>治愈: ${feature.properties.heal}</span> <span>死亡: ${feature.properties.dead}</span> </p>
+          <p><span>确诊: ${feature.properties.confirm || 0}</span> <span>疑似: ${feature.properties.suspect || 0}</span><p>
+          <p><span>治愈: ${feature.properties.heal || 0}</span> <span>死亡: ${feature.properties.dead || 0}</span> </p>
           <p style ='font-size: 8px;'>注：<I> 双击省份下钻到市级地图，双击空白处切换到省级地图</I> </p>
           </div>`;
   };
@@ -119,4 +119,27 @@ export function mapInfoContol() {
 
   return info
 
+}
+
+export function addLayerControl(overlayers) {
+  const layerContorl = new Layers({
+    position:'topleft',
+    overlayers
+  })
+  return layerContorl;
+}
+export function joinData(geo, data) {
+  const dataObj = {};
+  data.forEach(item => {
+    dataObj[item.name] = item;
+  });
+  geo.features = geo.features.map(item => {
+    const name = item.properties.name;
+    item.properties ={
+      ...item.properties,
+      ...dataObj[name]
+    }
+    return item
+  })
+  return geo;
 }
