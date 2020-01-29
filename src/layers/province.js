@@ -24,7 +24,7 @@ export  default class ProvinceNcovLayer extends BaseLayer {
     cityGeo.features = cityGeo.features.map(fe=> {
       const name = fe.properties.name.replace('市','');
       const city = citydata.find((c)=>{
-
+        if(c.name === '恩施州') c.name = '恩施';
         if(name.match(c.name)!==null || c.name.match(name)!== null) {
           return true;
         }
