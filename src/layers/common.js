@@ -6,9 +6,7 @@ export function addLayerGroup(scene, data, dataPoint) {
     autoFit: true
   })
     .source(data)
-    .size(1)
     .shape("fill")
-    .color('red')
     .color("confirm", (d) => {
       return d > 1000 ? colors[5] :
       d > 499 ? colors[4] :
