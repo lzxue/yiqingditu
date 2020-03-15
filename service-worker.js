@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/yiqingditu/index.html","e05515c2ccf0472c7abec790facd7cef"],["/yiqingditu/static/js/main.c285c751.js","a7a34e447c37323cb9b36de27091c140"]];
+var precacheConfig = [["/yiqingditu/index.html","df601e9b561f22aea787c308c83be9d6"],["/yiqingditu/static/js/main.ed04f685.js","513dbaa8dbe31e20703c67413c6e95c3"]];
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
