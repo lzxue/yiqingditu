@@ -7,7 +7,7 @@ export function addLayerGroup(scene, data, dataPoint) {
   })
     .source(data)
     .shape("fill")
-    .color("confirm", (d) => {
+    .color("currentConfirmedCount", (d) => {
       return d > 1000 ? colors[5] :
       d > 499 ? colors[4] :
        d > 100 ? colors[3] :
@@ -44,9 +44,10 @@ export function addLayerGroup(scene, data, dataPoint) {
     .color("#fff")
     .style({
       stroke: "#ffffff", // 描边颜色
-      strokeWidth: 1.0, // 描边宽度
+      strokeWidth: 0.5, // 描边宽度
       strokeOpacity: 1.0,
-      textAllowOverlap: false
+      textAllowOverlap: false,
+      fontWeight:'normal'
     });
 
   scene.addLayer(china);
@@ -64,7 +65,7 @@ export function addLegend() {
     var el = document.createElement('div');
     el.className = 'infolegend legend';
     var grades = [0, 1, 10, 100,500,1000];
-    el.innerHTML += '<h4>图例</h4><span>确诊数</span><br>'
+    el.innerHTML += '<h4>图例</h4><span>现存确诊数</span><br>'
     for (var i = 0; i < grades.length; i++) {
       el.innerHTML += '<i style="background:' + colors[i] + '"></i> ' + grades[i] + (grades[i + 1] ? '–' + grades[i + 1] + '<br>' : '+');
     }
@@ -85,13 +86,13 @@ export function addInfoControl() {
   };
 
   info.update = function (feature) {
-    if (!feature) {
+    if (!feature|| feature=== 'null') {
       return;
 
     }
     this._div.innerHTML = `<div class=info_control>
-           <h4>${feature.properties.name}</h4>
-          <p><span>确诊: ${feature.properties.confirm || 0}</span> <span>疑似: ${feature.properties.suspect || 0}</span><p>
+           <h4>${feature.properties.name ||feature.properties.cityName }</h4>
+          <p><span>确诊: ${feature.properties.confirm || 0}</span> <span>现存确诊: ${feature.properties.currentConfirmedCount || 0}</span><p>
           <p><span>治愈: ${feature.properties.heal || 0}</span> <span>死亡: ${feature.properties.dead || 0}</span> </p>
           <p style ='font-size: 8px;'>注：<I> 双击省份下钻到市级地图，双击空白处切换到省级地图</I> </p>
           </div>`;

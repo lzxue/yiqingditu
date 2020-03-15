@@ -12,7 +12,8 @@ export  default class ProvinceNcovLayer extends BaseLayer {
     })
   }
   async  addCityLayer(adcode,citydata) {
-
+  
+    
     const cityGeo = await (await fetch(`https://gw.alipayobjects.com/os/antvdemo/assets/json/${adcode}.json`)).json();
    
     const dataPoint = cityGeo.features.map(fe=>{
@@ -31,11 +32,13 @@ export  default class ProvinceNcovLayer extends BaseLayer {
         return false;
       })
       if(city) {
+        fe.properties.currentConfirmedCount = city.currentConfirmedCount
         fe.properties.confirm = city.confirm;
         fe.properties.suspect = city.suspect;
         fe.properties.heal = city.heal;
         fe.properties.dead = city.dead;
       } else {
+        fe.properties.currentConfirmedCount = 0;
         fe.properties.confirm = 0;
         fe.properties.suspect = 0;
         fe.properties.heal = 0;
@@ -48,9 +51,8 @@ export  default class ProvinceNcovLayer extends BaseLayer {
       this.cityLayer.layers[0].on('undblclick',()=>{
         this.cityLayer.destroy();
         this.show();
-        setTimeout(() => {
-          this.scene.render();
-        },10)
+
+        this.scene.render();
        
       })
       this.hide();
