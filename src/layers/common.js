@@ -108,7 +108,7 @@ export function mapInfoContol() {
   info.onAdd = function () {
     const el = document.createElement('div');
     el.innerHTML = `<div class='mapinfo'>
-      <span>数据来源：<a  target='_blank' href="https://github.com/wuhan2020/map-viz#%E4%B8%B4%E6%97%B6%E6%8E%A5%E5%8F%A3">wuhan2020</a></span>
+      <span>数据来源：<a  target='_blank' href="https://github.com/BlankerL/DXY-COVID-19-Crawler">BlankerL</a></span>
       <span>地图可视化库：<a  target='_blank' href="https://github.com/antvis/L7">AntV | L7</a></span>
       <span>源码：<a  target='_blank' href="https://github.com/lzxue/yiqingditu">疫情地图</a></span>
     </div>
